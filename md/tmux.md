@@ -14,8 +14,7 @@ $			Rename current session
 ,			Rename current window
 -			Delete the most recent paste buffer
 .			Move the current window
-/			Describe key binding
-0			Select window 0
+/			Rename pane (accordingly to dotfiles)
 1			Select window 1
 2			Select window 2
 3			Select window 3
