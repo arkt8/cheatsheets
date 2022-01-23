@@ -29,6 +29,13 @@ As the file will be open using bat you can search on terminal with "/" when the 
 Golden rule: never exceeds 80 columns in your file. The readability is better
 on limited line length.
 
+Suggestion:
+
+    name_of_function( param1=type, param2=type ) » return type
+        Description of function
+        * param1 description
+        * param2 description
+
 ## Dependencies
 
 * bat (batcat) an improved cat

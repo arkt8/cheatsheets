@@ -1,13 +1,29 @@
 #!/bin/bash
+
+color0='#000000'
+color8='#000000'
+color2='#222222'
+color15='#ffffff'
+
+. $HOME/.cache/wal/colors.sh
+
+
 cd $( realpath $( dirname $0 ) )/md || exit
 
-if [[ "$1" == "edit" ]] ; then x-terminal-emulator -e editor ./ ; exit; fi
-file=$(find . -name '*md' | sed 's/^\.\///g' \
-  | dmenu -b -i -l 10 \
-          -fn 'VictorMono:pixelsize=16' \
-          -sf '#99d1ce'  -sb '#195466' \
-          -nb '#0a0f14'  -nf '#33859e')
+file="$(\
+	find . -name '*md'\
+	| sed 's/^\.\///g' \
+	| rofi -dmenu -l 10 \
+	)"
 
-if [[ -z "$file" ]] ; then exit; fi
+if [[ "$file" == "edit" ]]
+	then x-terminal-emulator -e editor ./ ; exit; fi
 
-alacritty -e bat  --paging always --pager "less -RXI" "$file"
+if [[ -z "$file" ]]
+	then exit; fi
+
+ [[ -n $TERM ]] \
+ && x-terminal-emulator -e bat --decorations never \
+ 	--theme ansi-dark \
+ 	--paging always \
+ 	"$file"
